@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Storytel/gomock-matchers/tree/master.svg?style=svg)](https://circleci.com/gh/Storytel/gomock-matchers/tree/master)
 [![codecov](https://codecov.io/gh/Storytel/gomock-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/Storytel/gomock-matchers)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/Storytel/gomock-matchers)](https://goreportcard.com/report/github.com/Storytel/gomock-matchers)
 
 Matching library for use with [golang/gomock][golang-gomock]
 
