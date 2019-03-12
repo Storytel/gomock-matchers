@@ -6,6 +6,7 @@ type sameMatcher struct {
 	x interface{}
 }
 
+// Same will return a new Same matcher which uses `==` comparison
 func Same(x interface{}) *sameMatcher {
 	return &sameMatcher{x}
 }
