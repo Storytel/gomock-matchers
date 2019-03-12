@@ -2,21 +2,21 @@ package matchers
 
 import "github.com/golang/mock/gomock"
 
-type recordingMatcher struct {
+type recordMatcher struct {
 	x interface{}
 	m gomock.Matcher
 }
 
-func (rm *recordingMatcher) Matches(x interface{}) bool {
+func (rm *recordMatcher) Matches(x interface{}) bool {
 	rm.x = x
 	return rm.m.Matches(x)
 }
 
-func (rm *recordingMatcher) String() string {
+func (rm *recordMatcher) String() string {
 	return rm.m.String()
 }
 
-func (rm *recordingMatcher) Get() interface{} {
+func (rm *recordMatcher) Get() interface{} {
 	return rm.x
 }
 
@@ -24,8 +24,8 @@ func (rm *recordingMatcher) Get() interface{} {
 // provided matcher - following all the matching rules of that
 // matcher. In addition, the argument which is matched is recorded
 // and can later be retrieved for inspection using the Get() func
-func NewRecordingMatcher(m gomock.Matcher) *recordingMatcher {
-	return &recordingMatcher{
+func Record(m gomock.Matcher) *recordMatcher {
+	return &recordMatcher{
 		m: m,
 	}
 }
