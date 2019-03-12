@@ -1,5 +1,8 @@
 # Gomock Matcher
 
+[![codecov](https://codecov.io/gh/Storytel/gomock-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/Storytel/gomock-matchers)
+
+
 Matching library for use with [golang/gomock][golang-gomock]
 
 # Usage
