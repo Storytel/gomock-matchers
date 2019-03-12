@@ -20,6 +20,10 @@ func (rm *recordingMatcher) Get() interface{} {
 	return rm.x
 }
 
+// NewRecordingMatcher returns a new matcher which wraps the
+// provided matcher - following all the matching rules of that
+// matcher. In addition, the argument which is matched is recorded
+// and can later be retrieved for inspection using the Get() func
 func NewRecordingMatcher(m gomock.Matcher) *recordingMatcher {
 	return &recordingMatcher{
 		m: m,
