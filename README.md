@@ -6,7 +6,7 @@ Matching library for use with [golang/gomock][golang-gomock]
 
 All matchers in this package implements the [Matcher interface][matcher-interface] and can thusly be used with mocks from [golang/gomock][golang-gomock].
 
-Example usage of the **Record**, but all matchers work in a similar wahy:
+Example usage of **Record** matcher, but all matchers work in a similar way:
 
 ```go
 import "github.com/Storytel/gomock-matchers"
@@ -55,6 +55,7 @@ func TestRecord(t *testing.T) {
 
 <details>
 <summary><strong>SameMatcher</strong> - <em>Matcher which checks if values are the same</em></summary>
+
 This differs from `gomock.Eq` in that it does a comparison check with `==` and not a
 `reflect.DeepEqual`. This means that two pointers are only _same_ if they point to the
 same memory address
