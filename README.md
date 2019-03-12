@@ -1,5 +1,6 @@
 # Gomock Matcher
 
+[![CircleCI](https://circleci.com/gh/Storytel/gomock-matchers/tree/master.svg?style=svg)](https://circleci.com/gh/Storytel/gomock-matchers/tree/master)
 [![codecov](https://codecov.io/gh/Storytel/gomock-matchers/branch/master/graph/badge.svg)](https://codecov.io/gh/Storytel/gomock-matchers)
 
 
