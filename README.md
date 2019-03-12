@@ -15,10 +15,10 @@ func TestSomething(t *testing.T) {
   // Set up a new matcher
   matcher := matchers.Record(gomock.Eq(12))
 
-  // Expect `MyFunc` to be called on `mock`
+  // Expect `MyFunc` to be called on `mock` with argument equal to 12
   mock.EXPECT().MyFunc(matcher).Return(nil)
 
-  // Run the test this will expect MyFunc on Mock to be called with arg 12
+  // Run the test this which will expect the EXPECT()
   DUT()
 
   // For the RecordMatcher, you can get the argument. Other matchers have other characteristics.
@@ -54,7 +54,7 @@ func TestRecord(t *testing.T) {
 </details>
 
 <details>
-<summary><strong>SameMatcher</strong> - <em>Matcher which checks if values are the same</em>
+<summary><strong>SameMatcher</strong> - <em>Matcher which checks if values are the same</em></summary>
 This differs from `gomock.Eq` in that it does a comparison check with `==` and not a
 `reflect.DeepEqual`. This means that two pointers are only _same_ if they point to the
 same memory address
