@@ -82,6 +82,7 @@ func TestSame(t *testing.T) {
 ```
 </details>
 
+<details>
 <summary><strong>AsyncBlockMatcher</strong> - <em>Matcher which provides channel signaling when `Matches` is called</em></summary>
 
 AsyncBlock returns a matcher holding a channel which will be signaled when
