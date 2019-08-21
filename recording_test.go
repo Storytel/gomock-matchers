@@ -8,9 +8,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type MyType int
-
 func TestRecordMatcherPassthrough(t *testing.T) {
+	type MyType int
+
 	assert := assert.New(t)
 	m := matchers.Record(gomock.Eq(MyType(12)))
 
