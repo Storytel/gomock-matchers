@@ -82,5 +82,32 @@ func TestSame(t *testing.T) {
 ```
 </details>
 
+<summary><strong>AsyncBlockMatcher</strong> - <em>Matcher which provides channel signaling when `Matches` is called</em></summary>
+
+AsyncBlock returns a matcher holding a channel which will be signaled when
+the `Matches` function is called. AsyncBlock will wrap any other matcher
+to do the actual matching.
+
+This is useful if the code you're testing is spawning a go function which will
+invoke your mock at some time in the future. The channel gives you an easy way
+to wait for that invokation (using `<- matcher.Channel()`) and then do assertions.
+
+```go
+func TestAsyncBlockMatcher(t *testing.T) {
+	assert := assert.New(t)
+	m := matchers.AsyncBlock(gomock.Eq("12"))
+
+	didMatch := false
+	go func() {
+		didMatch = m.Matches("12")
+	}()
+
+  // This blocks until `Matches` is actually called
+	<-m.Channel()
+  assert.True(didMatch)
+}
+```
+</details>
+
 [matcher-interface]: https://godoc.org/github.com/golang/mock/gomock#Matcher
 [golang-gomock]: https://github.com/golang/mock
