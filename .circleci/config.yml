@@ -6,9 +6,6 @@ jobs:
         environment:
           GO111MODULE: "on"
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "54:0a:dd:d8:d1:ac:94:69:18:61:80:9f:90:28:b7:86"
       - checkout
       - run: go install github.com/mgechev/revive
       - run: revive -config revive.toml
