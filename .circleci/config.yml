@@ -2,13 +2,16 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.12
+      - image: circleci/golang:1.15
         environment:
           GO111MODULE: "on"
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
       - run: go install github.com/mgechev/revive
       - run: revive -config revive.toml
       - run: go test -race -coverprofile=coverage.txt -covermode=atomic -v ./...
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Upload Code Coverage Report
+          command: |
+            go get github.com/mattn/goveralls
+            goveralls -coverprofile=coverage.txt
