@@ -34,6 +34,25 @@ func TestSomething(t *testing.T) {
 
 # Matchers
 
+
+<details>
+<summary><strong>RegexpMatcher</strong> - <em>Matcher which accepts a string to be interpreted as a <a href="https://golang.org/pkg/regexp/">Go Regexp</a>.</em></summary>
+
+Regexpmatcher returns a matcher which will match if the supplied string, interpreted
+as a regexp, matches the input string.
+
+This is useful when you don't know exactly what the string might be in a run.
+Maybe it's a timestamp or something else outside of your control.
+
+```go
+func TestRegexpMatcher(t *testing.T) {
+  m := matchers.Regexp("^[^@]+@.+$")
+  m.Matches("donald_duck@duckburg.di") // true
+  m.Matches("daisy") // false
+}
+```
+</details>
+
 <details>
 <summary><strong>RecordMatcher</strong> - <em>Proxy matcher which captures the argument for further inspection.</em></summary>
 Wraps another matcher and records the value of the argument it's called with.
@@ -105,7 +124,7 @@ func TestAsyncBlockMatcher(t *testing.T) {
 
   // This blocks until `Matches` is actually called
 	<-m.Channel()
-  assert.True(didMatch)
+	assert.True(didMatch)
 }
 ```
 </details>
