@@ -2,7 +2,7 @@ package matchers
 
 import "github.com/golang/mock/gomock"
 
-type asyncBlockMatcher struct {
+type AsyncBlockMatcher struct {
 	matcher gomock.Matcher
 	ch      chan struct{}
 }
@@ -14,8 +14,8 @@ type asyncBlockMatcher struct {
 // This is useful if the code you're testing is spawning a go function which will
 // invoke your mock at some time in the future. The channel gives you an easy way
 // to wait for that invokation (using `<- matcher.Channel()`) and then do assertions.
-func AsyncBlock(matcher gomock.Matcher) *asyncBlockMatcher {
-	return &asyncBlockMatcher{
+func AsyncBlock(matcher gomock.Matcher) *AsyncBlockMatcher {
+	return &AsyncBlockMatcher{
 		ch:      make(chan struct{}),
 		matcher: matcher,
 	}
@@ -23,16 +23,16 @@ func AsyncBlock(matcher gomock.Matcher) *asyncBlockMatcher {
 
 // Channel returns a channel which will have an empty struct written to it every time
 // `Matches` is invoked.
-func (m *asyncBlockMatcher) Channel() <-chan struct{} {
+func (m *AsyncBlockMatcher) Channel() <-chan struct{} {
 	return m.ch
 }
 
-func (m *asyncBlockMatcher) Matches(x interface{}) bool {
+func (m *AsyncBlockMatcher) Matches(x interface{}) bool {
 	b := m.matcher.Matches(x)
 	m.ch <- struct{}{}
 	return b
 }
 
-func (m *asyncBlockMatcher) String() string {
+func (m *AsyncBlockMatcher) String() string {
 	return m.matcher.String()
 }
