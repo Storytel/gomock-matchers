@@ -5,21 +5,21 @@ import (
 	"regexp"
 )
 
-type regexpMatcher struct {
+type RegexpMatcher struct {
 	pattern *regexp.Regexp
 }
 
-func Regexp(pattern string) *regexpMatcher {
-	return &regexpMatcher{
+func Regexp(pattern string) *RegexpMatcher {
+	return &RegexpMatcher{
 		pattern: regexp.MustCompile(pattern),
 	}
 }
 
-func (m *regexpMatcher) String() string {
+func (m *RegexpMatcher) String() string {
 	return fmt.Sprintf("matches pattern /%v/", m.pattern)
 }
 
-func (m *regexpMatcher) Matches(x interface{}) bool {
+func (m *RegexpMatcher) Matches(x interface{}) bool {
 	s, ok := x.(string)
 	if !ok {
 		return false
