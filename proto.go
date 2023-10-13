@@ -1,16 +1,14 @@
 package matchers
 
 import (
+	"encoding/json"
+
 	"github.com/golang/mock/gomock"
 	"google.golang.org/protobuf/proto"
 )
 
 type ProtoMatcher struct {
 	data proto.Message
-}
-
-func Proto(x proto.Message) gomock.Matcher {
-	return &ProtoMatcher{data: x}
 }
 
 func (p *ProtoMatcher) Matches(x interface{}) bool {
@@ -22,5 +20,13 @@ func (p *ProtoMatcher) Matches(x interface{}) bool {
 }
 
 func (p *ProtoMatcher) String() string {
-	return "is matching"
+	data, err := json.Marshal(p.data)
+	if err != nil {
+		return "<unknown>"
+	}
+	return string(data)
+}
+
+func Proto(x proto.Message) gomock.Matcher {
+	return &ProtoMatcher{data: x}
 }
