@@ -1,17 +1,34 @@
 version: 2.1
-jobs:
-  build:
-    docker:
-      - image: circleci/golang:1.15
-        environment:
-          GO111MODULE: "on"
-    steps:
-      - checkout
-      - run: go install github.com/mgechev/revive
-      - run: revive -config revive.toml
-      - run: go test -race -coverprofile=coverage.txt -covermode=atomic -v ./...
-      - run:
-          name: Upload Code Coverage Report
-          command: |
-            go get github.com/mattn/goveralls
-            goveralls -coverprofile=coverage.txt
+
+orbs:
+  toolkit: storytel/toolkit@1
+
+parameters:
+  go-version:
+    type: string
+    default: "1.19"
+
+workflows:
+  ci:
+    jobs:
+      - toolkit/go-ci:
+          context: gcloud-storytel-build
+          version: <<pipeline.parameters.go-version>>
+          revive: false
+          test_package: ./...
+          filters:
+            branches:
+              ignore: main
+          name: ci-pr-branch
+          sonarqube_mode: pr
+
+      - toolkit/go-ci:
+          context: gcloud-storytel-build
+          version: <<pipeline.parameters.go-version>>
+          revive: false
+          test_package: ./...
+          filters:
+            branches:
+              only: main
+          name: ci-base-branch
+          sonarqube_mode: base
