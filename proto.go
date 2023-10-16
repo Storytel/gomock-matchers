@@ -3,7 +3,7 @@ package matchers
 import (
 	"encoding/json"
 
-	"github.com/golang/mock/gomock"
+	"go.uber.org/mock/gomock"
 	"google.golang.org/protobuf/proto"
 )
 
