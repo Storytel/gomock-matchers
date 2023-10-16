@@ -1,7 +1,5 @@
 # Gomock Matcher
 
-[![CircleCI](https://circleci.com/gh/Storytel/gomock-matchers/tree/master.svg?style=svg)](https://circleci.com/gh/Storytel/gomock-matchers/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/Storytel/gomock-matchers/badge.svg)](https://coveralls.io/github/Storytel/gomock-matchers)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Storytel/gomock-matchers)](https://goreportcard.com/report/github.com/Storytel/gomock-matchers)
 
 Matching library for use with [golang/gomock][golang-gomock]
@@ -129,5 +127,5 @@ func TestAsyncBlockMatcher(t *testing.T) {
 ```
 </details>
 
-[matcher-interface]: https://godoc.org/github.com/golang/mock/gomock#Matcher
-[golang-gomock]: https://github.com/golang/mock
+[matcher-interface]: https://godoc.org/go.uber.org/mock/gomock#Matcher
+[golang-gomock]: https://github.com/uber-go/mock

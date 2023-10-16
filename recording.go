@@ -1,6 +1,6 @@
 package matchers
 
-import "github.com/golang/mock/gomock"
+import "go.uber.org/mock/gomock"
 
 type RecordMatcher struct {
 	x interface{}

@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	matchers "github.com/Storytel/gomock-matchers"
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/mock/gomock"
 )
 
 func TestRecordMatcherPassthrough(t *testing.T) {
