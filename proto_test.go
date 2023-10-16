@@ -1,9 +1,10 @@
 package matchers_test
 
 import (
-	matchers "github.com/Storytel/gomock-matchers"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	matchers "github.com/Storytel/gomock-matchers/v2"
+	"github.com/stretchr/testify/assert"
 
 	"google.golang.org/protobuf/types/known/structpb"
 )
