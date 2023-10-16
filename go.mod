@@ -1,4 +1,4 @@
-module github.com/Storytel/gomock-matchers
+module github.com/Storytel/gomock-matchers/v2
 
 go 1.21
 

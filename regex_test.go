@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	matchers "github.com/Storytel/gomock-matchers"
+	matchers "github.com/Storytel/gomock-matchers/v2"
 	"github.com/stretchr/testify/assert"
 )
 
