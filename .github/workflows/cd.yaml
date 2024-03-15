@@ -1,4 +1,4 @@
-name: CI workflow lib
+name: CI workflow libf
 
 on:
   release:
