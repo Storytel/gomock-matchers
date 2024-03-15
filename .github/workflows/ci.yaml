@@ -1,12 +1,14 @@
 name: CI workflow
 
 on:
+  release:
+    types: [published]
   pull_request:
   push:
     branches:
       - main
 
 jobs:
-  cd:
+  ci:
     uses: storytel/actions-toolkit/.github/workflows/golang-libs.yaml@SRE-329/golang-lib-support
     secrets: inherit
