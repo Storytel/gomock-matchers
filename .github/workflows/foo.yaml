@@ -1,0 +1,12 @@
+name: My workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    
+jobs: 
+  build:
+    uses: storytel/actions-toolkit/.github/workflows/golang-libs.yaml@SRE-329/golang-lib-support
+    secrets: inherit
