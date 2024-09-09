@@ -16,7 +16,7 @@ type AsyncBlockMatcher struct {
 // to wait for that invokation (using `<- matcher.Channel()`) and then do assertions.
 func AsyncBlock(matcher gomock.Matcher) *AsyncBlockMatcher {
 	return &AsyncBlockMatcher{
-		ch:      make(chan struct{}),
+		ch:      make(chan struct{}, 1024),
 		matcher: matcher,
 	}
 }
