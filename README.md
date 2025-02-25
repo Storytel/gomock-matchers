@@ -127,5 +127,23 @@ func TestAsyncBlockMatcher(t *testing.T) {
 ```
 </details>
 
+<details>
+<summary><strong>SliceLengthMatcher</strong> - <em>Matcher which checks if a slice is of a specific length</em></summary>
+
+SliceLength returns a matcher which will match if the provided slice is of the specified length.
+
+This is useful to check if the correct number of elements are passed to a mocked function.
+
+```go
+func TestSliceMatcherString1(t *testing.T) {
+    assert := assert.New(t)
+
+    m := matchers.SliceLength[string](3)
+    assert.True(m.Matches([]string{"a", "b", "c"}))
+    assert.False(m.Matches([]string{"a", "b"}))
+}
+```
+</details>
+
 [matcher-interface]: https://godoc.org/go.uber.org/mock/gomock#Matcher
 [golang-gomock]: https://github.com/uber-go/mock
