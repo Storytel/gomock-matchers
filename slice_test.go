@@ -25,6 +25,14 @@ func TestStructSliceMatcher(t *testing.T) {
 	assert.True(m.Matches(data))
 }
 
+func TestSliceMatcherNumberOfElementsMismatch(t *testing.T) {
+	data := []string{"a", "b", "c"}
+
+	assert := assert.New(t)
+	m := matchers.SliceLength[string](2)
+	assert.False(m.Matches(data))
+}
+
 func TestSliceMatcherString(t *testing.T) {
 	assert := assert.New(t)
 	m := matchers.SliceLength[int](4)
