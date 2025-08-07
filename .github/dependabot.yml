@@ -8,6 +8,8 @@ updates:
     reviewers:
       - "Storytel/go"
 
+    cooldown:
+      default-days: 21
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -15,3 +17,5 @@ updates:
       time: "08:00"
     reviewers:
       - "Storytel/go"
+    cooldown:
+      default-days: 21
