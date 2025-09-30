@@ -1,0 +1,14 @@
+name: CD Pipeline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  issue_comment:
+    types: ['created']
+
+jobs:
+  cd:
+    uses: storytel/actions-toolkit/.github/workflows/go-cd.yaml@main
+    secrets: inherit
